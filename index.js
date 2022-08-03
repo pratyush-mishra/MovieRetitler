@@ -7,8 +7,8 @@ if(process.argv.length == 2) {
 
 if(process.argv[2]) {
     path = process.argv[2]
-    file_names = getCurrentFilenames(path) //change to cmd argument
-    file_names.forEach(oldname => {
+    folder_names = getCurrentFilenames(path) //change to cmd argument
+    folder_names.forEach(oldname => {
         if (oldname.includes(")")) {
             newname = getNewName(oldname)
             currPath = path.concat("\\", oldname)
@@ -23,19 +23,19 @@ if(process.argv[2]) {
             })
         }
         else {
-            console.log(`${oldname} does not have the expected file format`)
+            console.log(`${oldname} does not have the expected folder format`)
         }    
     })   
 }
 
 
 function getCurrentFilenames(path) {
-    console.log("Fetching current file names...")
-    file_names = []
-    fs.readdirSync(path).forEach(file => {
-        file_names.push(file)
+    console.log("Fetching current folder names...")
+    folder_names = []
+    fs.readdirSync(path).forEach(folder => {
+        file_names.push(folder)
     })
-    return file_names
+    return folder_names
 }
 
 function getNewName(fileName) {
